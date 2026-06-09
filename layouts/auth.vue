@@ -4,9 +4,7 @@ definePageMeta({
 });
 </script>
 <template>
-	<div
-		class="relative flex min-h-full overflow-hidden antialiased transition duration-150 bg-white visual-effects bg-gradient-to-br from-white to-gray-100 dark:from-gray-950 dark:to-gray-700"
-	>
+	<div class="relative flex min-h-full antialiased bg-white dark:bg-gray-950">
 		<div class="flex flex-col justify-center flex-1 px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
 			<div class="w-full max-w-sm mx-auto space-y-8 lg:w-96">
 				<DarkModeToggle />
@@ -14,11 +12,7 @@ definePageMeta({
 				<slot />
 			</div>
 		</div>
-		<div class="relative flex-1 hidden bg-white border-l-2 border-primary/50 lg:block">
-			<div
-				class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-primary dark:from-gray-700 dark:via-gray-900 dark:to-primary"
-			/>
-			<div class="absolute inset-0 opacity-50 grain-bg dark:opacity-10" />
+		<div class="relative flex-1 hidden bg-gray-50 dark:bg-gray-900 border-l border-gray-200 dark:border-gray-800 lg:block">
 		</div>
 	</div>
 </template>

@@ -47,23 +47,20 @@ const {
 );
 </script>
 <template>
-	<header class="relative w-full mx-auto space-y-4 md:flex md:items-center md:space-y-0 md:gap-x-4">
-		<div class="flex items-center bg-gray-900 justify-between py-2 px-6 md:flex-1 rounded-card">
-			<NuxtLink href="/" class="py-2">
-				<Logo class="h-6 text-white" />
-				<span v-if="globals?.title" class="sr-only">{{ globals.title }}</span>
-			</NuxtLink>
-			<nav class="hidden md:flex md:space-x-4 lg:space-x-6" aria-label="Global">
-				<NavigationMenuItem v-for="item in navigation?.items" :key="item.id" :item="item" />
-			</nav>
-			<div class="flex items-center justify-end flex-shrink-0 space-x-2">
-				<DarkModeToggle class="hidden text-gray-200 md:block hover:text-gray-400" bg="dark" />
-			</div>
-		</div>
+	<header class="relative w-full mx-auto flex items-center justify-between gap-x-4">
+		<NuxtLink href="/" class="flex-shrink-0 py-2">
+			<Logo class="h-6 text-gray-900 dark:text-white" />
+			<span v-if="globals?.title" class="sr-only">{{ globals.title }}</span>
+		</NuxtLink>
 
-		<div class="hidden h-full gap-4 md:flex">
-			<UButton to="/contact-us" color="primary" size="xl">Let's Talk</UButton>
-			<UButton to="/portal" color="primary" variant="ghost" size="xl">Login</UButton>
+		<nav class="hidden md:flex md:items-center md:space-x-1 lg:space-x-2" aria-label="Global">
+			<NavigationMenuItem v-for="item in navigation?.items" :key="item.id" :item="item" />
+		</nav>
+
+		<div class="flex items-center flex-shrink-0 space-x-3">
+			<DarkModeToggle class="hidden text-gray-500 md:block hover:text-gray-700 dark:hover:text-gray-300" />
+			<UButton to="/contact-us" color="primary" size="md">Let's Talk</UButton>
+			<UButton to="/portal" color="gray" variant="ghost" size="md">Login</UButton>
 		</div>
 		<NavigationMobileMenu v-if="navigation" :navigation="navigation" />
 	</header>

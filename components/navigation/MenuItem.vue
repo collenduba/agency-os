@@ -11,7 +11,6 @@ const props = defineProps<{
 
 const popover: Ref<any> = ref(null);
 
-// If route changes close the menu
 watch(
 	() => route.path,
 	() => {
@@ -24,7 +23,7 @@ watch(
 		v-if="!item.has_children"
 		:href="getNavItemUrl(item) as RouteLocationRaw"
 		class="menu-link"
-		exact-active-class="bg-gray-700"
+		exact-active-class="bg-gray-100 dark:bg-gray-800"
 		:target="item.open_in_new_tab ? '_blank' : '_self'"
 	>
 		{{ item.title }}
@@ -40,7 +39,7 @@ watch(
 			class="menu-link"
 		>
 			{{ item.title }}
-			<Icon name="heroicons:chevron-down" class="flex-none w-5 ml-1 text-gray-400" aria-hidden="true" />
+			<Icon name="heroicons:chevron-down" class="flex-none w-4 ml-0.5 text-gray-400" aria-hidden="true" />
 		</PopoverButton>
 
 		<transition
@@ -52,29 +51,29 @@ watch(
 			leave-to-class="translate-y-1 opacity-0"
 		>
 			<PopoverPanel
-				class="absolute z-10 w-screen max-w-md mt-4 overflow-hidden bg-gray-800 shadow-lg rounded-panel top-full"
+				class="absolute z-10 w-screen max-w-md mt-3 overflow-hidden bg-white dark:bg-gray-900 shadow-level-2 rounded-panel ring-1 ring-gray-200 dark:ring-gray-700"
 			>
-				<div class="p-4">
+				<div class="p-3">
 					<NuxtLink
 						v-for="childItem in item.children as NavigationItem[]"
 						:key="childItem.id"
 						:href="getNavItemUrl(childItem) as RouteLocationRaw"
-						class="relative flex p-4 leading-6 transition duration-150 rounded-panel group gap-x-6 hover:bg-gray-900"
+						class="relative flex p-3 leading-6 transition duration-150 rounded-panel group gap-x-4 hover:bg-gray-50 dark:hover:bg-gray-800"
 					>
 						<div
-							class="flex items-center justify-center flex-none p-2 mt-1 border rounded-button h-11 w-11 border-primary"
+							class="flex items-center justify-center flex-none p-2 mt-0.5 border rounded-button h-10 w-10 border-gray-200 dark:border-gray-700"
 						>
 							<Icon
 								v-if="childItem.icon"
 								:name="convertIconName(childItem.icon) as string"
-								class="w-10 h-10 text-primary"
+								class="w-5 h-5 text-gray-600 dark:text-gray-300"
 							/>
 						</div>
 						<div class="">
-							<p class="block font-medium text-white font-display">
+							<p class="block text-sm font-medium text-gray-900 dark:text-white">
 								{{ childItem.title }}
 							</p>
-							<p v-if="childItem.label" class="mt-1 text-sm leading-tight text-gray-400">
+							<p v-if="childItem.label" class="mt-0.5 text-sm text-gray-500 dark:text-gray-400">
 								{{ childItem.label }}
 							</p>
 						</div>
@@ -87,6 +86,6 @@ watch(
 
 <style lang="postcss">
 .menu-link {
-	@apply text-white hover:bg-gray-700 transition duration-150 font-medium hover:text-white py-2 px-3 inline-flex items-center font-display outline-none rounded-button;
+	@apply text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition duration-150 font-medium py-2 px-3 inline-flex items-center text-sm outline-none rounded-button;
 }
 </style>

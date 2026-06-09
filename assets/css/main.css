@@ -6,21 +6,32 @@ html {
 	scroll-margin-top: 4rem;
 }
 
-.grain-bg {
-	background-image: url('~~/assets/img/noise.png');
-}
-
 ::selection {
-	@apply bg-primary text-white;
+	@apply bg-primary/20 text-current;
 }
 
-/* For Webkit-based browsers (Chrome, Safari and Opera) */
-.scrollbar-hide::-webkit-scrollbar {
-	display: none;
+body {
+	@apply text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-950;
+	font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
-/* For IE, Edge and Firefox */
-.scrollbar-hide {
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
+.display-tight {
+	@apply font-display font-display tracking-display;
+}
+
+.display-tight-sm {
+	@apply font-display font-display tracking-display-sm;
+}
+
+body,
+p,
+li {
+	@apply leading-relaxed;
+}
+
+button,
+input,
+select,
+textarea {
+	font-weight: 400;
 }

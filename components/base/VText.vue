@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<TextProps>(), {
 		:class="[
 			{
 				'text-gray-900 dark:text-white': textColor === 'default',
-				'text-gray-600 dark:text-gray-300': textColor === 'light',
+				'text-gray-500 dark:text-gray-400': textColor === 'light',
 			},
 			{
 				'text-xs sm:text-sm': size === 'xs',

@@ -14,8 +14,8 @@ defineProps<PostBlogProps>();
 					<div
 						class="relative w-full mx-auto rounded-card overflow-hidden bg-cover h-[300px] md:h-[450px] dark:outline-gray-800"
 					>
-						<NuxtImg :src="page?.image" class="object-cover w-full h-full saturate-0 dark:brightness-90" alt="" />
-						<div class="absolute inset-0 mix-blend-multiply bg-gradient-to-b from-gray-100 to-gray-900" />
+						<NuxtImg :src="page?.image" class="object-cover w-full h-full dark:brightness-90" alt="" />
+						<div class="absolute inset-0 bg-gray-900/10" />
 					</div>
 				</div>
 
@@ -44,13 +44,9 @@ defineProps<PostBlogProps>();
 
 			<!-- Title Container -->
 			<div
-				class="relative w-full max-w-4xl p-2 px-8 py-8 mx-auto -mt-12 overflow-hidden text-gray-900 border md:-mt-32 rounded-card border-primary md:px-16 md:py-12"
+				class="relative w-full max-w-4xl p-2 px-8 py-8 mx-auto -mt-12 overflow-hidden border md:-mt-32 rounded-card border-gray-200 dark:border-gray-700 md:px-16 md:py-12 bg-white dark:bg-gray-900"
 			>
-				<div
-					class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-primary dark:from-gray-700 dark:via-gray-900 dark:to-primary/50"
-				/>
-				<div class="absolute inset-0 opacity-50 grain-bg dark:opacity-10" />
-				<div class="relative">
+				<div>
 					<TypographyHeadline :content="page?.title" as="h1" size="lg" />
 					<TypographyProse :content="page?.summary" class="mt-2" />
 				</div>

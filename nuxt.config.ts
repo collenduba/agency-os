@@ -25,6 +25,7 @@ export default defineNuxtConfig({
 	css: ['~/assets/css/tailwind.css', '~/assets/css/main.css'],
 
 	modules: [
+		'./modules/directus', // CMS-driven theme must load before @nuxt/ui
 		'@nuxt/image',
 		'@nuxt/ui', // https://ui.nuxt.com
 		'@nuxtjs/color-mode', // https://color-mode.nuxtjs.org

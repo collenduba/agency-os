@@ -75,11 +75,6 @@ function handleNavButton(direction: 'left' | 'right') {
 </script>
 <template>
 	<BlockContainer class="relative overflow-hidden" full-width>
-		<div
-			class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-primary dark:from-gray-700 dark:via-gray-900 dark:to-primary"
-		/>
-		<div class="absolute inset-0 opacity-50 grain-bg dark:opacity-10" />
-
 		<div class="relative text-center">
 			<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
 			<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />

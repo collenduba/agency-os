@@ -1,30 +1,29 @@
 import { theme } from '~/theme';
 
+const { primary: _primary, gray: _gray, ...themeWithoutColors } = theme;
+
 export default defineAppConfig({
-	theme,
+	theme: themeWithoutColors,
 	ui: {
 		strategy: 'override',
-		primary: theme.primary,
-		gray: theme.gray,
 		notifications: {
-			// Show toasts at the top right of the screen
 			position: 'top-0 right-0 bottom-auto left-auto',
 		},
 		card: {
 			base: 'transition duration-200',
-			shadow: 'shadow-none',
+			shadow: 'shadow-level-1',
 			body: {
 				base: 'h-full flex flex-col',
 			},
-			rounded: `rounded-card`,
+			rounded: 'rounded-card',
+			ring: 'ring-1 ring-gray-200 dark:ring-gray-700',
 		},
-
 		button: {
-			// base: 'hover:scale-105 active:hover:scale-95 transition duration-150',
-			font: 'font-bold',
+			font: 'font-medium',
 			rounded: 'rounded-button',
 			default: {
 				loadingIcon: 'material-symbols:sync-rounded',
+				size: 'md',
 			},
 		},
 		badge: {
@@ -34,7 +33,7 @@ export default defineAppConfig({
 			default: {
 				loadingIcon: 'material-symbols:sync-rounded',
 			},
-			rounded: `rounded-${theme.borderRadius}`,
+			rounded: 'rounded-input',
 		},
 		select: {
 			rounded: 'rounded-input',
@@ -73,9 +72,6 @@ export default defineAppConfig({
 			default: {
 				sortAscIcon: 'octicon:sort-asc-24',
 				sortDescIcon: 'octicon:sort-desc-24',
-				// sortButton: {
-				// 	icon: 'octicon-arrow-switch-24',
-				// },
 				loadingState: {
 					icon: 'material-symbols:sync-rounded',
 				},

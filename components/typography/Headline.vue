@@ -16,21 +16,14 @@ withDefaults(defineProps<HeadlineProps>(), {
 			{
 				'text-xl': size === 'xs',
 				'text-2xl': size === 'sm',
-				'text-3xl': size === 'md',
-				'text-4xl': size === 'lg',
-				'text-2xl md:text-5xl': size === 'xl',
-				'text-4xl xs:text-5xl md:text-7xl  dark:drop-shadow': size === 'title',
+				'text-3xl md:text-4xl': size === 'md',
+				'text-4xl md:text-5xl': size === 'lg',
+				'text-2xl md:text-5xl lg:text-6xl': size === 'xl',
+				'text-4xl xs:text-5xl md:text-6xl lg:text-7xl': size === 'title',
 			},
-			'font-display font-semibold leading-snug tracking-tight color-em dark:text-white',
+			size === 'title' || size === 'xl' ? 'tracking-display font-display' : 'tracking-display-sm font-display',
+			'font-display leading-tight text-gray-900 dark:text-white',
 		]"
 		v-html="content"
 	/>
 </template>
-
-<style lang="postcss">
-.color-em {
-	em {
-		@apply text-primary not-italic;
-	}
-}
-</style>

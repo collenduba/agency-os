@@ -4,7 +4,6 @@ import { borderRadiusMap } from '~/theme';
 const { globals, theme } = useAppConfig();
 const { fileUrl } = useFiles();
 
-// JSON-LD
 useSchemaOrg([
 	defineOrganization({
 		name: globals?.title ?? 'AgencyOS',
@@ -19,21 +18,22 @@ useSchemaOrg([
 useHead({
 	style: [
 		{
-			id: 'border-radius',
+			id: 'design-tokens',
 			innerHTML: `:root {${Object.entries(borderRadiusMap[theme.borderRadius])
 				.map(([key, value]) => `--border-radius-${key}: ${value};`)
 				.join('\n')}\n${Object.entries(theme.fonts)
 				.map(([key, value]) => `--font-${key}: ${value};`)
-				.join('\n')}`,
+				.join('\n')}
+--font-mono: ${theme.fonts.code};`,
 		},
 	],
 });
 </script>
+
 <template>
 	<NuxtLayout>
 		<NuxtLoadingIndicator
-			color="repeating-linear-gradient(to right,#FF99DD
-    0%,#94a3b8 100%)"
+			color="repeating-linear-gradient(to right,var(--color-primary-400),var(--color-primary-600))"
 		/>
 		<NuxtPage />
 	</NuxtLayout>

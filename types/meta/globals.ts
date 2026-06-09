@@ -1,5 +1,18 @@
 import type { File } from '../system/index.js';
 
+export interface ThemeSettings {
+	primary?: string | null;
+	gray?: string | null;
+	borderRadius?: string | null;
+	fonts?: {
+		families?: {
+			display?: string | null;
+			body?: string | null;
+			code?: string | null;
+		} | null;
+	} | null;
+}
+
 export interface Globals {
 	address_country?: string | null;
 	address_locality?: string | null;
@@ -27,4 +40,6 @@ export interface Globals {
 	seo?: string;
 	social?: string;
 	notice_deployment?: string;
+	/** Theme configuration (primary, gray, borderRadius, fonts) */
+	theme?: ThemeSettings | null;
 }

@@ -9,28 +9,31 @@ export interface Theme {
 		display: string;
 		sans: string;
 		code: string;
-		signature: string;
 	};
 }
 
 export const theme = {
-	primary: 'violet',
+	primary: 'red',
 	gray: 'slate',
 	borderRadius: 'lg',
 	googleFonts: {
-		Inter: true,
-		'Fira Code': true,
-		Poppins: [400, 500, 600, 700, 800, 900],
-		'Nothing You Could Do': true,
+		Inter: [400, 500, 600],
+		'JetBrains Mono': true,
 	},
 	fonts: {
-		display: 'Poppins',
+		display: 'Inter',
 		sans: 'Inter',
-		code: 'Fira Code',
-		signature: 'Nothing You Could Do',
+		code: 'JetBrains Mono',
 	},
 } as Theme;
 
+// DESIGN.md rounded token spec:
+//   xs: 4px     - form inputs
+//   sm: 6px     - buttons (signature radius)
+//   md: 8px     - compact cards
+//   lg: 12px    - pricing/feature cards, product mockups
+//   xl: 16px    - modals
+//   full: 9999px - pill tags, avatars
 export const borderRadiusMap = {
 	none: {
 		card: '0px',
@@ -39,35 +42,34 @@ export const borderRadiusMap = {
 		panel: '0px',
 	},
 	sm: {
-		card: '0.125rem',
-		button: '0.125rem',
-		input: '0.125rem',
-		panel: '0.125rem',
-	},
-	base: {
-		card: '0.25rem',
-		button: '0.25rem',
-		input: '0.25rem',
-		panel: '0.25rem',
-	},
-
-	md: {
-		card: '0.375rem',
-		button: '0.375rem',
-		input: '0.375rem',
-		panel: '0.375rem',
-	},
-	lg: {
 		card: '0.5rem',
-		button: '0.5rem',
-		input: '0.5rem',
+		button: '0.375rem',
+		input: '0.25rem',
 		panel: '0.5rem',
 	},
-	xl: {
+	base: {
+		card: '0.625rem',
+		button: '0.375rem',
+		input: '0.25rem',
+		panel: '0.625rem',
+	},
+	md: {
 		card: '0.75rem',
-		button: '0.75rem',
-		input: '0.5rem',
+		button: '0.5rem',
+		input: '0.375rem',
 		panel: '0.75rem',
+	},
+	lg: {
+		card: '0.75rem',
+		button: '0.375rem',
+		input: '0.375rem',
+		panel: '0.75rem',
+	},
+	xl: {
+		card: '1rem',
+		button: '0.375rem',
+		input: '0.375rem',
+		panel: '1rem',
 	},
 	full: {
 		card: '0.75rem',

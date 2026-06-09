@@ -7,19 +7,17 @@ defineProps<{
 </script>
 <template>
 	<BlockContainer class="relative grid gap-12 md:grid-cols-3">
-		<!-- Content -->
 		<div class="md:pt-12 md:col-span-2">
 			<TypographyTitle v-if="data.title">
 				{{ data.title }}
 			</TypographyTitle>
 			<TypographyHeadline v-if="data.headline" :content="data.headline" size="title" as="h1" />
-			<TypographyProse v-if="data.content" :content="data.content" size="lg" class="py-6 font-display" />
+			<TypographyProse v-if="data.content" :content="data.content" size="lg" class="py-6" />
 			<BlocksButtonGroup v-if="data.button_group" :data="data.button_group as BlockButtonGroup" />
 		</div>
-		<!-- Image -->
 		<div
 			v-if="data.image"
-			class="overflow-hidden border lg:relative lg:h-full dark:border-gray-700 rounded-card"
+			class="overflow-hidden border border-gray-200 dark:border-gray-700 rounded-card shadow-level-2 lg:relative lg:h-full"
 			:class="data.image_position === 'left' ? 'order-first lg:-ml-48 md:-ml-16' : 'lg:-mr-48 md:-mr-16 '"
 		>
 			<NuxtImg

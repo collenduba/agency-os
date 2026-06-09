@@ -202,12 +202,47 @@ export default defineNuxtModule({
 			nuxt.options.appConfig.globals = defu(nuxt.options.appConfig.globals, globals);
 			log.success('Globals loaded into appConfig');
 
+			// Inject theme overrides from CMS globals
+			const cmsTheme = globals?.theme;
+			const themeOverrides: Record<string, any> = {};
+			if (cmsTheme?.primary) {
+				themeOverrides.primary = cmsTheme.primary;
+			}
+			if (cmsTheme?.gray) {
+				themeOverrides.gray = cmsTheme.gray;
+			}
+			if (cmsTheme?.borderRadius) {
+				themeOverrides.borderRadius = cmsTheme.borderRadius;
+			}
+			const fontFamilies = cmsTheme?.fonts?.families;
+			if (fontFamilies?.display || fontFamilies?.body || fontFamilies?.code) {
+				themeOverrides.fonts = {};
+				if (fontFamilies?.display) themeOverrides.fonts.display = fontFamilies.display;
+				if (fontFamilies?.body) themeOverrides.fonts.sans = fontFamilies.body;
+				if (fontFamilies?.code) themeOverrides.fonts.code = fontFamilies.code;
+			}
+			if (Object.keys(themeOverrides).length > 0) {
+				nuxt.options.appConfig.theme = defu(themeOverrides, nuxt.options.appConfig.theme);
+				log.success('Theme overrides loaded from CMS globals');
+			}
+
+			if (cmsTheme?.primary || cmsTheme?.gray) {
+				nuxt.hook('modules:done', () => {
+					nuxt.hook('tailwindcss:config', () => {
+						const uiOverrides: Record<string, string> = {};
+						if (cmsTheme?.primary) uiOverrides.primary = cmsTheme.primary;
+						if (cmsTheme?.gray) uiOverrides.gray = cmsTheme.gray;
+						nuxt.options.appConfig.ui = defu(uiOverrides, nuxt.options.appConfig.ui);
+					});
+				});
+			}
+
 			// Add title template to the app head for use with useHead composable
 			nuxt.options.app.head.titleTemplate = `%s - ${globals?.title ?? 'Agency OS'}`;
 		} catch (error) {
 			nuxt.options.app.head.titleTemplate = '%s - Agency OS';
 
-			log.warn('Unable to load redirects due to the following error');
+			log.warn('Unable to load globals due to the following error');
 			log.error(error);
 			log.warn(`Please ensure the directus instance is reachable at ${moduleOptions.rest.baseUrl}.`);
 		}
